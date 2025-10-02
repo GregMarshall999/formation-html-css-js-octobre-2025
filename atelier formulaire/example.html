@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assets/JavaScript-logo.png">
+    <title>Examples</title>
+
+    <style>
+        .border {
+            border: 2px solid rgb(8, 18, 160);
+            padding: 10px;
+            border-radius: 5px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <!--On peut cliquer sur un bouton pour exécuter une fonction-->
+    <button onClick="buttonClicked()">Click me</button>
+
+    <p id="paragraph">Je suis un paragraphe</p>
+    <button onClick="logger()">Logger le paragraphe</button>
+    <button onClick="changeColor()">Changer la couleur du paragraphe</button>
+    <button onClick="toggleBorder(this)">Ajouter la bordure au paragraphe</button>
+
+    <h3>Formulaire</h3>
+    <form>
+        <input type="text" name="texte"/>
+        <button type="submit">Envoyer le formulaire</button>
+    </form>
+
+    <div id="result"></div>
+
+    <a href="../index.html">Retour à l'accueil</a>
+
+    <script src="example.js">
+        // Ce code est désactivé lors de la liaison avec example.js
+        console.log("Example chargé");
+    </script>
+</body>
+</html>

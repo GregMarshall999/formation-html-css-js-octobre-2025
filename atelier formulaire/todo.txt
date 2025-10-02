@@ -1,0 +1,20 @@
+build form
+
+inject JS
+
+handle onClick event
+
+get elements by id
+
+add class via classList
+
+remove class
+
+add text content
+
+event listeners
+
+FormData
+
+append sub html from JS
+
