@@ -53,3 +53,11 @@ function checkEmail(email) {
     return email.toLowerCase().match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/);
 }
 console.log(checkEmail(email));
+
+let test;
+if(test) {
+    console.log("test est non null");
+}
+else {
+    console.log("test est null");
+}
