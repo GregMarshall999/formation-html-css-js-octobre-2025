@@ -47,3 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 })
+
+let email = "jean@dupont.com";
+function checkEmail(email) {
+    return email.toLowerCase().match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/);
+}
+console.log(checkEmail(email));
