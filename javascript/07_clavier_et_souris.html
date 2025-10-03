@@ -22,6 +22,25 @@
             border: 1px solid #dee2e6;
             box-sizing: border-box;
         }
+
+        textarea {
+            width: 95%;
+            height: 100px;
+            padding: 1rem;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            resize: vertical;
+        }
+
+        #info-clavier {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e9ecef;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -40,7 +59,12 @@
     </section>
 
     <section id="clavier">
+        <h2>Evenements clavier</h2>
 
+        <div class="demo-box">
+            <textarea id="zone-clavier" placeholder="Tapez ici pour voir les événements clavier..."></textarea>
+            <div id="info-clavier"></div>
+        </div>
     </section>
 
     <script src="07_clavier_et_souris.js"></script>

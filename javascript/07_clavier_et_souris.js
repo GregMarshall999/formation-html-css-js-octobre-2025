@@ -69,4 +69,84 @@ document.addEventListener("DOMContentLoaded", () => {
             infoSouris.innerHTML += `<p style="color: darkred;">Menu contextuel désactivé</p>`;
         });
     }
+
+    //------------------------------------------------------------
+
+    const zoneClavier = document.getElementById("zone-clavier");
+    const infoClavier = document.getElementById("info-clavier");
+
+    if(zoneClavier && infoClavier) {
+        let derniereTouche = "";
+        let nombreCaracteres = 0;
+        let touchesSpeciales = [];
+
+        zoneClavier.addEventListener("keydown", e => {
+            derniereTouche = e.key;
+
+            if(['Control', 'Shift', 'Alt', 'Meta'].includes(e.key)) {
+                if(!touchesSpeciales.includes(e.key)) {
+                    touchesSpeciales.push(e.key);
+                }
+            }
+
+            if(e.key === 'Tab') {
+                e.preventDefault();
+            }
+
+            if(e.ctrlKey && e.key === 'a') {
+                e.preventDefault();
+                zoneClavier.select();
+                infoClavier.innerHTML = `<p style="color: blue;">Touches Ctrl+A détectées</p>`;
+                return;
+            }
+
+            if(e.target.value.length >= 100 && !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(e.key)) { 
+                e.preventDefault();
+                infoClavier.innerHTML = `<p style="color: red;">Limite de 100 caractères atteinte</p>`;
+                return;
+            }
+
+            infoClavier.innerHTML = `
+                <strong>Evenement keydown</strong><br>
+                Touche: "${e.key}"<br>
+                Code: "${e.code}"<br>
+                Alt: "${e.altKey}", Ctrl: "${e.ctrlKey}", Shift: "${e.shiftKey}"<br>
+                Dernière touche: "${derniereTouche}"<br>
+                Nombre de caractères: "${nombreCaracteres}"<br>
+                Touches spéciales: "${touchesSpeciales.join(', ') || 'Aucune'}"<br>
+            `;
+        })
+
+        //zoneClavier.addEventListener("keyup", e => {
+        //    if(['Control', 'Shift', 'Alt', 'Meta'].includes(e.key)) {
+        //        touchesSpeciales = touchesSpeciales.filter(touche => touche !== e.key);
+        //    }
+        //
+        //    infoClavier.innerHTML = `<br><strong>Evenement keyup</strong> - Touche: "${e.key}"`;
+        //});
+
+        zoneClavier.addEventListener("input", e => {
+            nombreCaracteres = e.target.value.length;
+
+            let validationMessage = '';
+            if(nombreCaracteres > 80) {
+                validationMessage = '<p style="color: orange;">Attention: plus de 80 caractères/p>';
+            }
+            if(nombreCaracteres >= 100) {
+                validationMessage = '<p style="color: red;">Limite de 100 caractères atteinte/p>';
+            }
+
+            infoClavier.innerHTML = `
+                <strong>Evenement input</strong><br>
+                Contenu: "${e.target.value}"<br>
+                Nombre de caractères: "${nombreCaracteres}"<br>
+                Dernière touche: "${derniereTouche}"<br>
+                ${validationMessage}
+            `;
+        });
+    }
 });
+
+
+let a = true, b = false;
+const ternaire = a && b ? "Vrai" : "Faux";
